@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +16,7 @@ import javax.persistence.OneToOne;
 
 import guru.springframework.domain.ingredient.Ingredient;
 import guru.springframework.domain.notes.Notes;
-import guru.springframework.domain.uom.UnitOfMeasure;
+import guru.springframework.enumeration.*;
 
 @Entity
 public class Recipe {
@@ -32,9 +34,12 @@ public class Recipe {
 	
 	@Lob
 	private String directions;
-	//private Difficulty difficulty;
+	
 	@Lob
 	private Byte[] image;
+	
+	@Enumerated(value=EnumType.STRING)
+	private Difficulty difficulty;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	private Notes notes;
@@ -132,6 +137,15 @@ public class Recipe {
 
 	public void setIngredient(Set<Ingredient> ingredient) {
 		this.ingredient = ingredient;
+	}
+	
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
+
+
+	public void setDifficulty(Difficulty difficulty) {
+		this.difficulty = difficulty;
 	}
 
 
