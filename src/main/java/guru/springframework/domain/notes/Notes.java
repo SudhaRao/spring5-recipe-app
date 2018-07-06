@@ -52,40 +52,5 @@ public class Notes {
 	public void setRecipeNotes(String recipeNotes) {
 		this.recipeNotes = recipeNotes;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
-		result = prime * result + ((recipeNotes == null) ? 0 : recipeNotes.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Notes other = (Notes) obj;
-		if (recipe == null) {
-			if (other.recipe != null)
-				return false;
-		} else if (!recipe.equals(other.recipe))
-			return false;
-		if (recipeNotes == null) {
-			if (other.recipeNotes != null)
-				return false;
-		} else if (!recipeNotes.equals(other.recipeNotes))
-			return false;
-		return true;
-	}
-	@Override
-	public String toString() {
-		return "Notes [recipe=" + recipe + ", recipeNotes=" + recipeNotes + "]";
-	}
 	
-	
-
 }

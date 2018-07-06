@@ -1,6 +1,6 @@
 package guru.springframework.domain.recipe;
 
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -10,10 +10,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import guru.springframework.domain.category.Category;
 import guru.springframework.domain.ingredient.Ingredient;
 import guru.springframework.domain.notes.Notes;
 import guru.springframework.enumeration.*;
@@ -45,13 +49,18 @@ public class Recipe {
 	private Notes notes;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="recipe")
-	private Set<Ingredient> ingredient;
+	private Set<Ingredient> ingredient = new HashSet<>();
+	
+	@ManyToMany
+	@JoinTable(name="recipe_category", 
+	joinColumns=@JoinColumn(name="recipe_id"),
+	inverseJoinColumns=@JoinColumn(name="category_id"))
+	private Set<Category> categories  = new HashSet<>();;
 	
 	public Recipe() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 	public Recipe(String description, Integer prepTime, Integer cookTime, Integer servings, String source, String url,
 			String directions, Byte[] image, Notes notes) {
@@ -147,87 +156,15 @@ public class Recipe {
 	public void setDifficulty(Difficulty difficulty) {
 		this.difficulty = difficulty;
 	}
+	
+	public Set<Category> getCategories() {
+		return categories;
+	}
 
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cookTime == null) ? 0 : cookTime.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((directions == null) ? 0 : directions.hashCode());
-		result = prime * result + Arrays.hashCode(image);
-		result = prime * result + ((notes == null) ? 0 : notes.hashCode());
-		result = prime * result + ((prepTime == null) ? 0 : prepTime.hashCode());
-		result = prime * result + ((servings == null) ? 0 : servings.hashCode());
-		result = prime * result + ((source == null) ? 0 : source.hashCode());
-		result = prime * result + ((url == null) ? 0 : url.hashCode());
-		return result;
+	public void setCategory(Set<Category> categories) {
+		this.categories = categories;
 	}
-	
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Recipe other = (Recipe) obj;
-		if (cookTime == null) {
-			if (other.cookTime != null)
-				return false;
-		} else if (!cookTime.equals(other.cookTime))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (directions == null) {
-			if (other.directions != null)
-				return false;
-		} else if (!directions.equals(other.directions))
-			return false;
-		if (!Arrays.equals(image, other.image))
-			return false;
-		if (notes == null) {
-			if (other.notes != null)
-				return false;
-		} else if (!notes.equals(other.notes))
-			return false;
-		if (prepTime == null) {
-			if (other.prepTime != null)
-				return false;
-		} else if (!prepTime.equals(other.prepTime))
-			return false;
-		if (servings == null) {
-			if (other.servings != null)
-				return false;
-		} else if (!servings.equals(other.servings))
-			return false;
-		if (source == null) {
-			if (other.source != null)
-				return false;
-		} else if (!source.equals(other.source))
-			return false;
-		if (url == null) {
-			if (other.url != null)
-				return false;
-		} else if (!url.equals(other.url))
-			return false;
-		return true;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "Recipe [description=" + description + ", prepTime=" + prepTime + ", cookTime=" + cookTime
-				+ ", servings=" + servings + ", source=" + source + ", url=" + url + ", directions=" + directions
-				+ ", image=" + Arrays.toString(image) + ", notes=" + notes + "]";
-	}
-	
-	
-	
+
+
 }
