@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)https://s0.2mdn.net/1384245/1524771138564/18D30008_SavingsBlue_728x90/index.html -->
+<html id="html" class=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="x-ua-compatible" content="IE=Edge"> 
+  
+  <title>Progressive Insurance</title>
+  <meta name="viewport" content="width=device-width">
+  <link href="./css" rel="stylesheet" type="text/css">
+  <!-- <link href='https://fonts.googleapis.com/css?family=Poppins:500,600,700' rel='stylesheet' type='text/css'> -->
+  <link rel="stylesheet" href="./main.css">
+<script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script></head>
+
+<body onload="banner.init();">
+    <div id="ad" class="">
+        <div id="content"> 
+        
+<!-- -- add content ----------------------------------------- -->
+    
+            <div class="in" id="bgGradient"></div> 
+            <div class="in" id="flo"></div>  
+            <div id="copy" class="in">
+        	    <div id="copy1">YOU COULD <span>SAVE</span></div>
+                <div>
+                    <div id="copy2a"><span>$</span>668</div>
+                    <div id="copy2"><span>$</span>668</div>
+                </div>
+                
+                <div id="copy3">when you switch <span>to Progressive</span></div>
+                
+            </div>  
+            <div id="logo" class="in"></div>
+
+<!-- -- end content ----------------------------------------- -->
+
+<!-- ---------------------------------------------------------- ---->    	 		       
+<!-- -- CTA content ----------------------------------------- -->
+
+            <div id="bgExitArea"></div>
+            <div id="cta" class="in">
+                <input type="text" id="zipCode" name="zipCode" maxlength="5" value="Zip Code">
+                <div class="button" id="zipSubmit">
+                    <a>Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./clickTag.js"></script>
+    <script src="./main.js"></script>
+    <script type="text/javascript">
+		var clickTag = "";
+        var clickTag2 = "";
+  	</script>
+      
+
+</body></html>

@@ -21,7 +21,13 @@ import guru.springframework.domain.category.Category;
 import guru.springframework.domain.ingredient.Ingredient;
 import guru.springframework.domain.notes.Notes;
 import guru.springframework.enumeration.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+@Data
+@EqualsAndHashCode
+@ToString
 @Entity
 public class Recipe {
 	
@@ -134,10 +140,21 @@ public class Recipe {
 	public Notes getNotes() {
 		return notes;
 	}
+	
+	//JPA bidirectional methods and relationships
 	public void setNotes(Notes notes) {
 		this.notes = notes;
+		notes.setRecipe(this);
 	}
 	
+	
+	//JPA bidirectional methods and relationships
+	public Recipe addIngredient(Ingredient ingredient) {
+		ingredient.setRecipe(this);
+		this.ingredient.add(ingredient);
+		return this;
+		
+	}
 	
 	public Set<Ingredient> getIngredient() {
 		return ingredient;
@@ -166,5 +183,6 @@ public class Recipe {
 		this.categories = categories;
 	}
 
-
+	 
+	
 }

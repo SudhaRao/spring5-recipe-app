@@ -2,7 +2,6 @@ package guru.springframework.domain.ingredient;
 
 import java.math.BigDecimal;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,13 @@ import javax.persistence.OneToOne;
 
 import guru.springframework.domain.recipe.Recipe;
 import guru.springframework.domain.uom.UnitOfMeasure;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+@Data
+@EqualsAndHashCode(exclude= {"recipe"})
+@ToString
 @Entity
 public class Ingredient {
 	
@@ -35,12 +40,11 @@ public class Ingredient {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+	public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom) {
 		super();
 		this.description = description;
 		this.amount = amount;
 		this.uom = uom;
-		this.recipe = recipe;
 	}
 
 	public Long getId() {

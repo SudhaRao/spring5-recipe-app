@@ -53,6 +53,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	
 	</dependencies>
 
 	<build>
@@ -60,6 +66,29 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*IntegrationTest.java</include>
+						<additionalClasspathElements>
+							<additionalClasspathElement>${basedir}/target/classes</additionalClasspathElement>
+						</additionalClasspathElements>
+						<parallel>none</parallel>
+					</includes>
+				</configuration>
+				<executions>
+				<execution>
+		            <goals>
+		              <goal>integration-test</goal>
+		              <goal>verify</goal>
+		            </goals>
+		            <inherited>false</inherited>
+		            <configuration>
+		            </configuration>
+		          </execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
