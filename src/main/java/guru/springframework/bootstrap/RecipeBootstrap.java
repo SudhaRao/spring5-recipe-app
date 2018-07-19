@@ -232,15 +232,15 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 		guacRecipe.setNotes(guacNotes);
 	
 		
-		guacRecipe.getIngredient().add(new Ingredient("Ripe avacados", new BigDecimal(2), eachUom));		
-		guacRecipe.getIngredient().add(new Ingredient("Kosher Salt", new BigDecimal(2), teaSpoonUom));		
-		guacRecipe.getIngredient().add(new Ingredient("Fresh Lime Juice", new BigDecimal(2), tablespoonUom));		
-		guacRecipe.getIngredient().add(new Ingredient("Sliced Red or thinly sliced green Onions", new BigDecimal(2), eachUom));		
-		guacRecipe.getIngredient().add(new Ingredient("Green Chilies mined or sliced", new BigDecimal(2), tablespoonUom));		
-		guacRecipe.getIngredient().add(new Ingredient("Cilantro", new BigDecimal(1), eachUom));		
-		guacRecipe.getIngredient().add(new Ingredient("Freshly grated black pepper", new BigDecimal(2), eachUom));		
-		guacRecipe.getIngredient().add(new Ingredient("ripe tomatoes", new BigDecimal(5), eachUom));		
-		guacRecipe.getIngredient().add(new Ingredient("Minced Garlic", new BigDecimal(2), teaSpoonUom));	
+		guacRecipe.getIngredient().add(new Ingredient("Ripe avacados", new BigDecimal(2), eachUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("Kosher Salt", new BigDecimal(2), teaSpoonUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("Fresh Lime Juice", new BigDecimal(2), tablespoonUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("Sliced Red or thinly sliced green Onions", new BigDecimal(2), eachUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("Green Chilies mined or sliced", new BigDecimal(2), tablespoonUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("Cilantro", new BigDecimal(1), eachUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("Freshly grated black pepper", new BigDecimal(2), eachUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("ripe tomatoes", new BigDecimal(5), eachUom, guacRecipe));		
+		guacRecipe.getIngredient().add(new Ingredient("Minced Garlic", new BigDecimal(2), teaSpoonUom, guacRecipe));	
 		
 		guacRecipe.getCategories().add(americanCategory);
 		guacRecipe.getCategories().add(mexicanCategory);
@@ -291,18 +291,18 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
 		vangibathRecipe.setNotes(vangibathNotes);
 
-		vangibathRecipe.getIngredient().add(new Ingredient("Raw Rice", new BigDecimal(2), cupsUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Oil", new BigDecimal(3), tablespoonUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Medium Onion Thinly Sliced", new BigDecimal(1), eachUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Green Chilli Slit(optional)", new BigDecimal(1), eachUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Brinjals", new BigDecimal(250), gramUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Green Peas", new BigDecimal(1), cupsUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Lemon juice as needed or 1 tbsp tamarind paste", new BigDecimal(2), tablespoonUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Salt to taste", new BigDecimal(1), teaSpoonUom));		
-		vangibathRecipe.getIngredient().add(new Ingredient("Dry coconut (optional, adds flavor and taste)", new BigDecimal(1), tablespoonUom));	
-		vangibathRecipe.getIngredient().add(new Ingredient("Curry leaves", new BigDecimal(10), eachUom));	
-		vangibathRecipe.getIngredient().add(new Ingredient("Cumin or jeera", new BigDecimal(1), teaSpoonUom));	
-		vangibathRecipe.getIngredient().add(new Ingredient("Chana dal & urad dal", new BigDecimal(1), tablespoonUom));	
+		vangibathRecipe.getIngredient().add(new Ingredient("Raw Rice", new BigDecimal(2), cupsUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Oil", new BigDecimal(3), tablespoonUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Medium Onion Thinly Sliced", new BigDecimal(1), eachUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Green Chilli Slit(optional)", new BigDecimal(1), eachUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Brinjals", new BigDecimal(250), gramUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Green Peas", new BigDecimal(1), cupsUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Lemon juice as needed or 1 tbsp tamarind paste", new BigDecimal(2), tablespoonUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Salt to taste", new BigDecimal(1), teaSpoonUom, vangibathRecipe));		
+		vangibathRecipe.getIngredient().add(new Ingredient("Dry coconut (optional, adds flavor and taste)", new BigDecimal(1), tablespoonUom, vangibathRecipe));	
+		vangibathRecipe.getIngredient().add(new Ingredient("Curry leaves", new BigDecimal(10), eachUom, vangibathRecipe));	
+		vangibathRecipe.getIngredient().add(new Ingredient("Cumin or jeera", new BigDecimal(1), teaSpoonUom, vangibathRecipe));	
+		vangibathRecipe.getIngredient().add(new Ingredient("Chana dal & urad dal", new BigDecimal(1), tablespoonUom, vangibathRecipe));	
 
 		vangibathRecipe.getCategories().add(indianCategory);
 		

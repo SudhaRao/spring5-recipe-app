@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="UTF-8">
+<title>Show Recipe</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+ crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.1/umd/popper.js"
+        crossorigin="anonymous" integrity="sha256-1bI2hYpoXO8605goiOg+TiWksCVw2RBxWRtnvzPRWN0="
+        th:src="@{/webjars/popper.js/1.14.1/umd/popper.js}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        crossorigin="anonymous" integrity=""
+        th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        
+</head>
+<body>
+
+<div class="container-fluid" style="...">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h1 class="panel-title" th:text="${recipe.description}">Recipe Description!</h1>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-3">
+								<h5>Categories:</h5>
+							</div>
+							<div class="col-md-9">
+								<ul th:remove="all">Category One</ul>
+								<ul th:remove="all">Category Two</ul>
+								<!-- @thymesVar id="recipe" type="guru.springframework.domain.recipe" -->
+								<ul>
+								<li th:each="category : ${recipe.categories}" 
+								th:text="${category.getDescription()}"></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-3">
+								<h5>Cook Time:</h5>
+							</div>
+							<div class="col-md-3">
+							<!-- @thymesVar id="recipe" type="guru.springframework.domain.recipe" -->
+							
+								<p th:text="${recipe.cookTime} + ' mins'"></p>
+							</div>
+							
+							<div class="col-md-3">
+								<h5>Difficulty:</h5>
+							</div>
+							<div class="col-md-3">
+								<p th:text="${recipe.difficulty}"></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<h5>Prep Time:</h5>
+							</div>
+							<div class="col-md-3">
+								<p th:text="${recipe.prepTime} + ' mins'"></p>
+							</div>
+							
+							<div class="col-md-3">
+								<h5>Servings:</h5>
+							</div>
+							<div class="col-md-3">
+								<p th:text="${recipe.servings}"></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<h5>Source:</h5>
+							</div>
+							<div class="col-md-3">
+								<p th:text="${recipe.source}"></p>
+							</div>
+							
+							<div class="col-md-3">
+								<h5>URL:</h5>
+							</div>
+							<div class="col-md-3">
+								<p th:text="${recipe.url}"></p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h1 class="panel-title">Ingredients:</h1>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<ul>
+								<!-- @thymesVar id="recipe" type="guru.springframework.domain.recipe" -->
+								
+									<li th:remove="All">1 cup of milk</li>
+									<li th:remove="All">1 Teaspoon of chocolate</li>
+									<li th:each="ingredient : ${recipe.ingredient}" 
+									th:text="${(ingredient.getAmount() +' '+ ingredient.uom.getDescription()  
+									+ '-' + ingredient.getDescription())}"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+						
+					</div>
+				</div>
+				
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h1 class="panel-title">Directions:</h1>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<p th:text="${recipe.directions}"></p>		
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h1 class="panel-title">Notes:</h1>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<p th:text="${recipe.notes.getRecipeNotes()}"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

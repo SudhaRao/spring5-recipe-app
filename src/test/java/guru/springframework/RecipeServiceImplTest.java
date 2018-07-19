@@ -1,16 +1,19 @@
 package guru.springframework;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 
@@ -34,7 +37,22 @@ public class RecipeServiceImplTest {
 	}
 	
 	@Test
-	public void getRecipes() throws Exception{
+	public void getRecipeByIdTest() throws Exception{
+		
+		Recipe recipe = new Recipe();
+		recipe.setId(1L);
+		Optional<Recipe> recipeOptional = Optional.of(recipe);
+		when(recipeRepository.findById(Mockito.anyLong())).thenReturn(recipeOptional);
+		Recipe recipeReturned = recipeServiceImpl.findRecipeById(1L);
+		
+		assertNotNull("Null recipe returned", recipeReturned);
+		verify(recipeRepository, times(1)).findById(Mockito.anyLong());
+		verify(recipeRepository, never()).findAll();
+		
+	}
+	
+	@Test
+	public void getRecipesTest() throws Exception{
 		
 		Recipe recipe = new Recipe();
 		HashSet<Recipe> recipesData = new HashSet<Recipe>();

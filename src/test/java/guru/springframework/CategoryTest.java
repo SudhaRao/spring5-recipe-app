@@ -31,7 +31,7 @@ public class CategoryTest {
 	@Test
 	public void getDescrption() throws Exception{
 			
-			String description = "	Perfect Easy Guacamole";
+			String description = "Perfect Easy Guacamole";
 			category.setDescription(description);
 			assertEquals(description, category.getDescription());
 			
